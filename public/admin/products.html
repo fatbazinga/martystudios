@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>PRODUCTS — MARTYRSTUDIOS</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <script src="/cursor.js" defer></script>
+  <script src="/admin/products.js" defer></script>
+</head>
+<body class="admin">
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <filter id="ink-s"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <filter id="ink-l"><feTurbulence type="fractalNoise" baseFrequency=".35" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.5"/></filter>
+  </svg>
+
+  <header class="top">
+    <a href="/" class="mark" aria-label="martyrstudios home"><img src="/img/sigil-160.png" alt="" width="34" height="34"><span class="ink-s">MARTYR<em>STUDIOS</em></span></a>
+    <nav>
+      <a href="/admin/">ORDERS</a>
+      <a href="/admin/products.html" aria-current="page">PRODUCTS</a>
+      <a href="/cdn-cgi/access/logout">SIGN OUT</a>
+    </nav>
+  </header>
+
+  <main class="adm">
+    <div class="adm-head">
+      <h1 class="ink-l">products</h1>
+      <button class="cta new-btn" id="newBtn">+ NEW PRODUCT</button>
+    </div>
+    <p class="adm-msg" id="msg" role="status">loading products…</p>
+    <ul class="plist" id="plist"></ul>
+  </main>
+
+  <!-- editor -->
+  <dialog id="ed" class="ed" aria-labelledby="edTitle">
+    <form id="edForm" novalidate>
+      <div class="ed-head">
+        <h2 id="edTitle">edit product</h2>
+        <button type="button" class="x" data-close aria-label="Close">✕</button>
+      </div>
+
+      <div class="ed-body">
+        <section class="ed-photos">
+          <div class="o-label">PHOTOS <span class="hint">· first photo is the main one</span></div>
+          <div class="pgrid" id="pgrid"></div>
+          <label class="ghost upl">+ ADD PHOTOS<input type="file" id="files" accept="image/jpeg,image/png,image/webp" multiple hidden></label>
+          <p class="hint" id="uplMsg"></p>
+        </section>
+
+        <section class="ed-fields">
+          <label class="fld"><span>name</span><input id="fName" maxlength="80" required></label>
+          <label class="fld"><span>price (€)</span><input id="fPrice" inputmode="decimal" placeholder="24.99" required></label>
+          <label class="fld"><span>description</span><textarea id="fDesc" rows="3" maxlength="1000"></textarea></label>
+          <label class="chk"><input type="checkbox" id="fActive"> <span>visible in shop</span></label>
+
+          <div class="o-label">SIZES &amp; STOCK</div>
+          <table class="stock">
+            <tbody id="sizes"></tbody>
+          </table>
+          <div class="addsize">
+            <input id="newSize" placeholder="add size…" maxlength="12" aria-label="New size name">
+            <button type="button" class="ghost" id="addSize">ADD</button>
+            <span class="presets" id="presets"></span>
+          </div>
+        </section>
+      </div>
+
+      <div class="ed-foot">
+        <button type="button" class="linkish danger" id="delBtn">delete product</button>
+        <p class="err" id="edErr" role="alert"></p>
+        <button type="submit" class="cta" id="saveBtn">SAVE</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

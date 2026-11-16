@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ORDERS — MARTYRSTUDIOS</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <script src="/cursor.js" defer></script>
+  <script src="/admin/admin.js" defer></script>
+</head>
+<body class="admin">
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <filter id="ink-s"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+    <filter id="ink-l"><feTurbulence type="fractalNoise" baseFrequency=".35" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.5"/></filter>
+  </svg>
+
+  <header class="top">
+    <a href="/" class="mark" aria-label="martyrstudios home"><img src="/img/sigil-160.png" alt="" width="34" height="34"><span class="ink-s">MARTYR<em>STUDIOS</em></span></a>
+    <nav><span class="who" id="who"></span><a href="/admin/" aria-current="page">ORDERS</a><a href="/admin/products.html">PRODUCTS</a><a href="/cdn-cgi/access/logout">SIGN OUT</a></nav>
+  </header>
+
+  <main class="adm">
+    <div class="adm-head">
+      <h1 class="ink-l">orders</h1>
+      <div class="stats" id="stats"></div>
+    </div>
+
+    <div class="toolbar">
+      <div class="tabs" role="tablist">
+        <button role="tab" data-f="todo" aria-selected="true">TO SHIP <b id="nTodo">0</b></button>
+        <button role="tab" data-f="shipped" aria-selected="false">SHIPPED <b id="nShipped">0</b></button>
+        <button role="tab" data-f="all" aria-selected="false">ALL <b id="nAll">0</b></button>
+      </div>
+      <input type="search" id="q" placeholder="search name, email, item, ref…" aria-label="Search orders">
+      <button class="ghost" id="csv">EXPORT CSV</button>
+      <button class="ghost" id="refresh">REFRESH</button>
+    </div>
+
+    <p class="adm-msg" id="msg" role="status">loading orders…</p>
+    <div class="orders" id="orders"></div>
+    <button class="ghost more" id="more" hidden>LOAD OLDER ORDERS</button>
+  </main>
+</body>
+</html>

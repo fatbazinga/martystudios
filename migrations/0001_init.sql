@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS products (id TEXT PRIMARY KEY, name TEXT NOT NULL, description TEXT NOT NULL DEFAULT '', price INTEGER NOT NULL CHECK (price >= 0), active INTEGER NOT NULL DEFAULT 1, sort INTEGER NOT NULL DEFAULT 0, created_at INTEGER NOT NULL DEFAULT (unixepoch()), updated_at INTEGER NOT NULL DEFAULT (unixepoch()));
+CREATE TABLE IF NOT EXISTS variants (product_id TEXT NOT NULL REFERENCES products(id) ON DELETE CASCADE, size TEXT NOT NULL, stock INTEGER NOT NULL DEFAULT 0 CHECK (stock >= 0), sort INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (product_id, size));
+CREATE TABLE IF NOT EXISTS images (id TEXT PRIMARY KEY, product_id TEXT NOT NULL REFERENCES products(id) ON DELETE CASCADE, position INTEGER NOT NULL DEFAULT 0, mime TEXT, data BLOB, url TEXT, created_at INTEGER NOT NULL DEFAULT (unixepoch()));
+CREATE INDEX IF NOT EXISTS images_by_product ON images (product_id, position);
+CREATE TABLE IF NOT EXISTS reservations (session_id TEXT PRIMARY KEY, items TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending', created_at INTEGER NOT NULL DEFAULT (unixepoch()));

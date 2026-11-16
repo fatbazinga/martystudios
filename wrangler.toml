@@ -5,5 +5,5 @@ compatibility_date = "2026-11-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "martyrstudios"
-database_id = "PASTE-YOUR-DATABASE-ID-HERE"   # from: npx wrangler d1 create martyrstudios
+database_id = "290fcf85-4e46-4c39-a17a-bd5656eed36d"   # from: npx wrangler d1 create martyrstudios
 migrations_dir = "migrations"

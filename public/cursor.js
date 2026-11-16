@@ -9,6 +9,7 @@
 //   • SPLATS: put blood-splat PNGs in /img/blood/ and list them
 //     in SPLAT_SPRITES. They'll be used for landed drops instead
 //     of the drawn blobs.
+//  Turned off on phones/tablets (touch screens) automatically.
 // ─────────────────────────────────────────────────────────────
 const BLOOD = {
   CURSOR: "/img/cursor-cross.png",
@@ -24,6 +25,8 @@ const BLOOD = {
 (function () {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = matchMedia("(pointer: fine)").matches;
+  // Phones & tablets: no custom cursor, no blood. Only devices with a real mouse.
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
   // cross cursor (works even when blood is off)
   const [hx, hy] = BLOOD.HOTSPOT;
@@ -83,7 +86,7 @@ const BLOOD = {
   // ── input ──
   let lx = null, ly = null, lt = 0, hovering = false;
   addEventListener("pointermove", (e) => {
-    if (e.pointerType !== "mouse" && !finePointer) return;
+    if (e.pointerType !== "mouse") return;
     const now = performance.now();
     if (lx === null) { lx = e.clientX; ly = e.clientY; lt = now; return; }
     const dx = e.clientX - lx, dy = e.clientY - ly, dt = Math.max(16, now - lt);
@@ -106,6 +109,7 @@ const BLOOD = {
   addEventListener("pointerover", (e) => { hovering = !!e.target.closest?.("a, button, label, [role=button]"); }, { passive: true });
 
   addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
     const n = (26 + Math.random() * 18) * BLOOD.INTENSITY;
     for (let i = 0; i < n; i++) {
       const a = rand(0, Math.PI * 2), s = rand(1, 7);

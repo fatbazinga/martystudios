@@ -26,6 +26,9 @@ const fmt = (c) => new Intl.NumberFormat(undefined, { style: "currency", currenc
 (function videos() {
   const v = $("#bgv");
   if (!v || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // iOS only autoplays when these are set as properties, not just attributes
+  v.muted = true; v.defaultMuted = true; v.playsInline = true;
+  v.setAttribute("webkit-playsinline", "");
   const saveData = navigator.connection && navigator.connection.saveData;
   if (saveData) return;
 

@@ -16,3 +16,6 @@ migrations_dir = "migrations"
 
 [observability]
 enabled = true
+
+[vars]
+ADMIN_EMAIL = "michael.z.daher@gmail.com"

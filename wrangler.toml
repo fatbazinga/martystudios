@@ -1,0 +1,9 @@
+name = "martyrstudios"
+pages_build_output_dir = "public"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "martyrstudios"
+database_id = "PASTE-YOUR-DATABASE-ID-HERE"   # from: npx wrangler d1 create martyrstudios
+migrations_dir = "migrations"

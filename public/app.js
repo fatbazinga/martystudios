@@ -6,9 +6,7 @@
 //  Missing files are skipped silently, so it's safe to leave this as is.
 // ─────────────────────────────────────────────────────────────
 const VIDEOS = [
-  "/videos/01.mp4",
-  "/videos/02.mp4",
-  "/videos/03.mp4",
+  "/videos/01.mp4"
 ];
 
 const $ = (s, r = document) => r.querySelector(s);
